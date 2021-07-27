@@ -1,0 +1,38 @@
+$navbar-height: 50px;
+$navbar-padding: 20px;
+$list-button-height: 50px;
+$list-button-margin: 10px;
+
+.navbar {
+  background: green;
+  height: $navbar-height;
+  text-align: center;
+  padding: $navbar-padding 0;
+  line-height: calc(#{$navbar-height} - 2 * #{$navbar-padding});
+  margin: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.add-list-button {
+  position: fixed;
+  top: $navbar-height;
+  right: 0;
+  height: $list-button-height;
+  text-transform: uppercase;
+  margin-top: $list-button-margin;
+  margin-right: $list-button-margin;
+}
+
+.list-container {
+  height: calc(
+    100% - #{$navbar-height} - #{$list-button-height} - #{$list-button-margin}
+  );
+  padding: 10px;
+  position: relative;
+  top: calc(
+    #{$navbar-height} + #{$list-button-height} + #{$list-button-margin}
+  );
+  display: flex;
+}

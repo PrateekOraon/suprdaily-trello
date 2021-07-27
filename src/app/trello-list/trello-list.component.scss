@@ -1,0 +1,33 @@
+$list-color: #faebd7;
+$list-header-height: 60px;
+$list-footer-height: 60px;
+
+.trello-list {
+  width: 300px;
+  margin: 10px;
+  height: 98%;
+  background: $list-color;
+  padding: 0;
+
+  .list-header {
+    padding: 20px;
+    height: 60px;
+    background: darken($color: $list-color, $amount: 10%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .list-content {
+    height: calc(100% - #{$list-footer-height} - #{$list-header-height});
+    padding: 18px;
+    overflow-y: scroll;
+  }
+
+  .list-footer {
+    height: $list-footer-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

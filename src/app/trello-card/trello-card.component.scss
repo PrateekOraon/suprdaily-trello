@@ -1,0 +1,16 @@
+.trello-card {
+  margin-bottom: 20px;
+
+  .card-header {
+    // padding: 20px;
+    height: 40px;
+    // background: darken($color: $list-color, $amount: 10%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    mat-icon {
+      font-size: 17px;
+    }
+  }
+}
