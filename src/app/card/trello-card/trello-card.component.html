@@ -1,9 +1,9 @@
 <mat-card class="trello-card">
     <div class="card-header">
-        <div>{{ title }}</div>
-        <button mat-icon-button>
+        <div>{{ item.title }}</div>
+        <button mat-icon-button (click)="onRemoveCardClick()">
             <mat-icon>clear</mat-icon>
         </button>
     </div>
-    {{ description }}
+    {{ item.description }}
 </mat-card>

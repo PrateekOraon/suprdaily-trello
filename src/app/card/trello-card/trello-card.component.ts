@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TrelloCard } from '../../model';
 
 @Component({
   selector: 'app-trello-card',
@@ -7,14 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TrelloCardComponent implements OnInit {
   @Input()
-  title: string = "";
+  item!: TrelloCard;
 
-  @Input()
-  description: string = "";
+  @Output()
+  removeCard = new EventEmitter<void>();
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onRemoveCardClick() {
+    this.removeCard.emit();
   }
 
 }

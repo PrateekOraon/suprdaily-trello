@@ -2,11 +2,10 @@
   Trello Board
 </h1>
 
+<button class="add-list-button" mat-raised-button color="primary" (click)="addNewList()">ADD LIST</button>
 
-<button class="add-list-button" mat-raised-button color="primary">ADD LIST</button>
-
-<div class="list-container">
-  <app-trello-list cdkDropList (cdkDropListDropped)="drop($event)" *ngFor="let list of boardLists" [title]="list.title">
-    <app-trello-card *ngFor="let card of list.items" cdkDrag [title]="card.title" [description]="card.description"></app-trello-card>
+<div class="list-container" cdkDropListGroup>
+  <app-trello-list [cdkDropListData]="list" cdkDropList (cdkDropListDropped)="drop($event, list)" *ngFor="let list of boardLists" [list]="list">
+    <app-trello-card *ngFor="let item of list.items" cdkDrag [item]="item" (removeCard)="removeCard(list, item)"></app-trello-card>
   </app-trello-list>
 </div>
