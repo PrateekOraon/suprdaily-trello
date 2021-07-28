@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { TrelloCardComponent } from './trello-card/trello-card.component';
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { TrelloCardComponent } from './trello-card/trello-card.component';
     MatSliderModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

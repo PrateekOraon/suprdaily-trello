@@ -1,10 +1,9 @@
 .trello-card {
   margin-bottom: 20px;
+  cursor: pointer;
 
   .card-header {
-    // padding: 20px;
     height: 40px;
-    // background: darken($color: $list-color, $amount: 10%);
     display: flex;
     align-items: center;
     justify-content: space-between;
