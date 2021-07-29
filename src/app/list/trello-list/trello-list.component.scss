@@ -25,7 +25,16 @@ $list-footer-height: 60px;
   .list-content {
     height: calc(100% - #{$list-footer-height} - #{$list-header-height});
     padding: 18px;
-    // overflow-y: scroll;
+    overflow-y: scroll;
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .list-footer {
