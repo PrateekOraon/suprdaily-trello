@@ -38,7 +38,7 @@ export class TrelloEpics {
     addNewListEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.ADD_NEW_LIST),
         map((action: ActionType) => {
-            const lists = state$.value.lists.slice();
+            const lists = [...state$.value.lists];
             const {title} = action.payload;
             let newList: TrelloList = {
                 id: Date.now(),
@@ -58,7 +58,7 @@ export class TrelloEpics {
     addNewCardEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.ADD_NEW_CARD),
         map((action: ActionType) => {
-            const lists = state$.value.lists.slice();
+            const lists = [...state$.value.lists];
             const {listID, title, description} = action.payload;
             let list = lists.find(list => list.id === listID);
 
@@ -81,7 +81,7 @@ export class TrelloEpics {
     removeCardEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.REMOVE_CARD),
         map((action: ActionType) => {
-            const lists = state$.value.lists.slice();
+            const lists = [...state$.value.lists];
             const {listID, cardID} = action.payload;
             let list = lists.find(list => list.id === listID);
 
@@ -99,7 +99,7 @@ export class TrelloEpics {
     updateListEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.UPDATE_LIST),
         map((action: ActionType) => {
-            const lists = state$.value.lists.slice();
+            const lists = [...state$.value.lists];
             const {listID, items} = action.payload;
             let list = lists.find(list => list.id === listID);
 
@@ -115,7 +115,7 @@ export class TrelloEpics {
     removeListEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.REMOVE_LIST),
         map((action: ActionType) => {
-            const lists = state$.value.lists.slice();
+            const lists = [...state$.value.lists];
             const {listID} = action.payload;
             const payload = lists.filter(list => list.id !== listID);
 
