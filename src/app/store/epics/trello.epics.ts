@@ -23,10 +23,10 @@ export class TrelloEpics {
             if(result) {
                 payload = result;
             }
-            return {
-                type: TrelloActions.FETCH_LISTS_FULFILLED,
+            return ({
+                type: TrelloActions.STORE_TO_LOCAL,
                 payload
-            }
+            })
         }),
         catchError(error => of({
             type: TrelloActions.FETCH_LISTS_ERROR
@@ -46,7 +46,7 @@ export class TrelloEpics {
             const payload = [...lists, newList];
 
             return {
-                type: TrelloActions.UPDATE_LISTS,
+                type: TrelloActions.STORE_TO_LOCAL,
                 payload
             };
         })
@@ -69,7 +69,7 @@ export class TrelloEpics {
             list.items = [...list.items, newItem ];
 
             return {
-                type: TrelloActions.UPDATE_LISTS,
+                type: TrelloActions.STORE_TO_LOCAL,
                 payload: lists
             };
         })
@@ -87,7 +87,7 @@ export class TrelloEpics {
             list.items = [...newItems];
 
             return {
-                type: TrelloActions.UPDATE_LISTS,
+                type: TrelloActions.STORE_TO_LOCAL,
                 payload: lists
             };
         })
@@ -103,7 +103,7 @@ export class TrelloEpics {
             list.items = [...items ];
 
             return {
-                type: TrelloActions.UPDATE_LISTS,
+                type: TrelloActions.STORE_TO_LOCAL,
                 payload: lists
             };
         })
@@ -116,6 +116,21 @@ export class TrelloEpics {
             const {listID} = action.payload;
             const payload = lists.filter(list => list.id !== listID);
 
+            return {
+                type: TrelloActions.STORE_TO_LOCAL,
+                payload
+            };
+        })
+    )
+
+    storeToLocalEpic = (action$) => action$.pipe(
+        ofType(TrelloActions.STORE_TO_LOCAL),
+        mergeMap((action: ActionType) => {
+            const payload = action.payload;
+            return this.dataService.setListsInLocalStorage(payload)
+        }),
+        map((lists: TrelloList[]) => {
+            const payload = lists;
             return {
                 type: TrelloActions.UPDATE_LISTS,
                 payload

@@ -22,6 +22,7 @@ export class TrelloActions {
   static UPDATE_LIST = "UPDATE_LIST";
   static REMOVE_LIST = "REMOVE_LIST";
   static REMOVE_CARD = "REMOVE_CARD";
+  static STORE_TO_LOCAL = "STORE_TO_LOCAL";
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 

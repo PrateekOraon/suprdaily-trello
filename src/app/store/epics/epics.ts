@@ -15,7 +15,8 @@ export class RootEpic {
             this.trelloEpics.addNewCardEpic,
             this.trelloEpics.updateListEpic,
             this.trelloEpics.removeListEpic,
-            this.trelloEpics.removeCardEpic
+            this.trelloEpics.removeCardEpic,
+            this.trelloEpics.storeToLocalEpic
         )
     }
 }
