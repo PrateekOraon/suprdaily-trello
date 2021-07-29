@@ -1,4 +1,4 @@
-$list-color: #673ab729;
+$list-color: rgba(255, 255, 255, 0.3);
 $list-header-height: 60px;
 $list-footer-height: 60px;
 
@@ -25,7 +25,7 @@ $list-footer-height: 60px;
   .list-content {
     height: calc(100% - #{$list-footer-height} - #{$list-header-height});
     padding: 18px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
   }
 
   .list-footer {
@@ -33,5 +33,14 @@ $list-footer-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    button {
+      background: rgba(255, 255, 255, 0.3);
+
+      mat-icon {
+        color: white;
+        font-weight: bold;
+      }
+    }
   }
 }

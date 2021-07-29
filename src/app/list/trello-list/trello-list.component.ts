@@ -48,7 +48,7 @@ export class TrelloListComponent implements OnInit {
   }
 
   removeList() {
-    let shouldClose = confirm("Do you want to remove this list?")
+    let shouldClose = confirm("All the cards in this list will be deleted. Continue?")
     if(shouldClose) {
       this.trelloActions.removeList(this.list.id);
     }

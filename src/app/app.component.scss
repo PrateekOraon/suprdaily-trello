@@ -4,7 +4,7 @@ $list-button-height: 50px;
 $list-button-margin: 10px;
 
 .navbar {
-  background: #673ab7;
+  background: rgba(255, 255, 255, 0.2);
   height: $navbar-height;
   text-align: center;
   padding: $navbar-padding 0;
@@ -24,6 +24,7 @@ $list-button-margin: 10px;
   text-transform: uppercase;
   margin-top: $list-button-margin;
   margin-right: $list-button-margin;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .list-container {
