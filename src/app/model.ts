@@ -11,12 +11,13 @@ export interface TrelloList {
     items: TrelloCard[];
 }
 
-
+/** dialog box data for adding new list */
 export interface ListDialogData {
     title: string;
   }
 
-  export interface CardDialogData {
-    title: string;
-    description: string;
-  }
+/** dialog box data for adding new card */  
+export interface CardDialogData {
+  title: string;
+  description: string;
+}

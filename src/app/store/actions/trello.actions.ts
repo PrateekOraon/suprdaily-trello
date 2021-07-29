@@ -26,12 +26,14 @@ export class TrelloActions {
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
+  /** to fetch lists from localStorage */
   fetchLists() {
     this.ngRedux.dispatch({
       type: TrelloActions.FETCH_LISTS,
     });
   };
 
+  /** to add new list on clicking add list button */
   addNewList(title: string) {
     this.ngRedux.dispatch({
       type: TrelloActions.ADD_NEW_LIST,
@@ -41,6 +43,7 @@ export class TrelloActions {
     })
   }
 
+  /** to add new card in a list on clicking add button */
   addNewCardToList(listID: number, title: string, description: string) {
     this.ngRedux.dispatch({
       type: TrelloActions.ADD_NEW_CARD,
@@ -52,6 +55,7 @@ export class TrelloActions {
     })
   }
 
+  /** to remove a card from a list on clicking close button */
   removeCardFromList(listID: number, cardID: number) {
     this.ngRedux.dispatch({
       type: TrelloActions.REMOVE_CARD,
@@ -62,6 +66,7 @@ export class TrelloActions {
     });
   }
 
+  /** to update a list in general */
   updateList(listID: number, items: TrelloCard[]) {
     this.ngRedux.dispatch({
       type: TrelloActions.UPDATE_LIST,
@@ -72,6 +77,7 @@ export class TrelloActions {
     })
   }
 
+  /** to remove a list on clicking close button */
   removeList(listID: number) {
     this.ngRedux.dispatch({
       type: TrelloActions.REMOVE_LIST,

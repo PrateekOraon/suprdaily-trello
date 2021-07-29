@@ -13,6 +13,7 @@ import { IAppState } from "../reducers";
 export class TrelloEpics {
     constructor(private dataService: DataService) {}
     
+    /** get lists from localStorage and update in state */
     getListsEpic = (action$) => action$.pipe(
         ofType(TrelloActions.FETCH_LISTS),
         mergeMap(_ => {
@@ -24,7 +25,7 @@ export class TrelloEpics {
                 payload = result;
             }
             return ({
-                type: TrelloActions.STORE_TO_LOCAL,
+                type: TrelloActions.FETCH_LISTS_FULFILLED,
                 payload
             })
         }),
@@ -33,6 +34,7 @@ export class TrelloEpics {
         }))
     );
 
+    /** add new list and store in localStorage and redux state */
     addNewListEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.ADD_NEW_LIST),
         map((action: ActionType) => {
@@ -52,7 +54,7 @@ export class TrelloEpics {
         })
     )
 
-    
+    /** add new card in a list and store in localStorage and redux state */
     addNewCardEpic = (action$, state$: StateObservable<IAppState>) => action$.pipe(
         ofType(TrelloActions.ADD_NEW_CARD),
         map((action: ActionType) => {
@@ -124,6 +126,7 @@ export class TrelloEpics {
         })
     )
 
+    /** update lists in localStorage and redux state */
     storeToLocalEpic = (action$) => action$.pipe(
         ofType(TrelloActions.STORE_TO_LOCAL),
         mergeMap((action: ActionType) => {

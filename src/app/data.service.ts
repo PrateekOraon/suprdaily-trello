@@ -1,17 +1,17 @@
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TrelloList } from './model';
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { map, mergeMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store/reducers';
 
+/** service for call external APIs (in this case setting and getting values from localStorage) */
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-    
 
   constructor(protected localStorage: LocalStorage, private ngRedux: NgRedux<IAppState>) {}
 

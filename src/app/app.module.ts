@@ -55,13 +55,14 @@ export class AppModule {
     private rootEpic: RootEpic
     ) {
 
+      /** redux store config */
       const epicMiddleware = createEpicMiddleware();
       const middleware = [epicMiddleware];
       let enhancers: any[] = [];
 
-    if (!environment.production && devTools.isEnabled()) {
-      enhancers = [ ...enhancers, devTools.enhancer() ];
-    }
+      if (!environment.production && devTools.isEnabled()) {
+        enhancers = [ ...enhancers, devTools.enhancer() ];
+      }
 
       ngRedux.configureStore(
         rootReducer,
@@ -70,6 +71,6 @@ export class AppModule {
         enhancers
       );
 
-      epicMiddleware.run(rootEpic.epics);
+      epicMiddleware.run(this.rootEpic.epics);
   }
 }

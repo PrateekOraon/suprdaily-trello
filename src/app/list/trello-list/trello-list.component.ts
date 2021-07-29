@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TrelloCardDialogComponent } from 'src/app/card/trello-card-dialog/trello-card-dialog.component';
 import { TrelloCard, TrelloList } from 'src/app/model';
@@ -8,9 +8,9 @@ import { TrelloActions } from 'src/app/store/actions/trello.actions';
   selector: 'app-trello-list',
   templateUrl: './trello-list.component.html',
   styleUrls: ['./trello-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush /** to not call change detection when list in not changed */
 })
-export class TrelloListComponent implements OnInit {
+export class TrelloListComponent {
   @Input()
   list!: TrelloList;
 
@@ -18,13 +18,6 @@ export class TrelloListComponent implements OnInit {
   newCardDescription: string = "";
 
   constructor(public dialog: MatDialog, private trelloActions: TrelloActions) { }
-
-  ngOnInit(): void {
-  }
-
-  // ngDoCheck() {
-  //   console.log(this.list.id);
-  // }
 
   addNewCard() {
     const dialogRef = this.dialog.open(TrelloCardDialogComponent, {
@@ -41,8 +34,6 @@ export class TrelloListComponent implements OnInit {
         this.newCardTitle = "";
         this.newCardDescription = "";
       }
-      // console.log('The card dialog was closed', result? result: "empty");
-      // this.newListTitle = result;
     });
 
   }

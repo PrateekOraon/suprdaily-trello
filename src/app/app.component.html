@@ -2,12 +2,12 @@
   Trello Board
 </h1>
 
-<button class="add-list-button" mat-raised-button color="primary" (click)="addNewList()">ADD LIST</button>
+<button class="add-list-button" mat-raised-button color="primary" (click)="addNewList()">ADD NEW LIST</button>
 
 <div class="list-container" cdkDropListGroup>
   <ng-container *ngIf="boardLists$ | async as boardLists">
     <ng-container *ngIf="boardLists.length; else blankPage">
-      <app-trello-list [cdkDropListData]="list" cdkDropList (cdkDropListDropped)="drop($event, list)" *ngFor="let list of boardLists" [list]="list">
+      <app-trello-list [cdkDropListData]="list" cdkDropList (cdkDropListDropped)="drop($event)" *ngFor="let list of boardLists" [list]="list">
         <app-trello-card *ngFor="let item of list.items" cdkDrag [item]="item" (removeCard)="removeCard(list, item)"></app-trello-card>
       </app-trello-list>
     </ng-container>

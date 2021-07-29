@@ -17,5 +17,4 @@ export class TrelloListDialogComponent {
     this.dialogRef.close();
   }
 
-
 }

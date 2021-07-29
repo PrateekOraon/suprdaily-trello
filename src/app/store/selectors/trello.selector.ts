@@ -8,8 +8,3 @@ export const getListsSelector = createSelector(
     lists => lists
 )
 
-// export const getFavorites = createSelector(
-//     [getCustomers],
-//     customers => customers.filter(customer => customer.isFavorite)
-// )
-
