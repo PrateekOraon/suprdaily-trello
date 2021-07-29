@@ -16,7 +16,7 @@ import { TrelloActions } from './store/actions/trello.actions';
 export class AppComponent implements OnInit {
   @select(getListsSelector)
   boardLists$: Observable<TrelloList[]>;
-  boardLists: TrelloList[];
+  // boardLists: TrelloList[];
   
   newListTitle: string = "";
 
@@ -24,9 +24,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.trelloActions.fetchLists();
-    this.boardLists$.subscribe(lists => {
-      this.boardLists = lists;
-    })
+    // this.boardLists$.subscribe(lists => {
+    //   this.boardLists = lists;
+    // })
   }
 
   drop(event: CdkDragDrop<TrelloList>, list: TrelloList) {

@@ -5,7 +5,14 @@
 <button class="add-list-button" mat-raised-button color="primary" (click)="addNewList()">ADD LIST</button>
 
 <div class="list-container" cdkDropListGroup>
-  <app-trello-list [cdkDropListData]="list" cdkDropList (cdkDropListDropped)="drop($event, list)" *ngFor="let list of boardLists" [list]="list">
-    <app-trello-card *ngFor="let item of list.items" cdkDrag [item]="item" (removeCard)="removeCard(list, item)"></app-trello-card>
-  </app-trello-list>
+  <ng-container *ngIf="boardLists$ | async as boardLists">
+    <ng-container *ngIf="boardLists.length; else blankPage">
+      <app-trello-list [cdkDropListData]="list" cdkDropList (cdkDropListDropped)="drop($event, list)" *ngFor="let list of boardLists" [list]="list">
+        <app-trello-card *ngFor="let item of list.items" cdkDrag [item]="item" (removeCard)="removeCard(list, item)"></app-trello-card>
+      </app-trello-list>
+    </ng-container>
+    <ng-template #blankPage>
+      <div class="mat-h2">Try adding lists...</div>
+    </ng-template>
+  </ng-container>
 </div>
