@@ -61,9 +61,10 @@ export class TrelloEpics {
             let list = lists.find(list => list.id === listID);
 
             const newItem: TrelloCard = {
-                id: Math.random()*100,
+                id: Date.now(),
                 title,
-                description
+                description,
+                created_at: Date.now()
             }
 
             list.items = [...list.items, newItem ];

@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
       transferArrayItem(pItems, cItems, event.previousIndex, event.currentIndex);
 
       this.trelloActions.updateList(pID, pItems);
-      this.trelloActions.updateList(cID, cItems);
-      console.log("From: ", event.previousContainer.data);
-      console.log("To: ", event.container.data);
+      this.trelloActions.updateList(cID, cItems.sort((a, b) => (a.id - b.id)));
+      // console.log("From: ", event.previousContainer.data);
+      // console.log("To: ", event.container.data);
     } else {
       // moveItemInArray(list.items, event.previousIndex, event.currentIndex);
     }
