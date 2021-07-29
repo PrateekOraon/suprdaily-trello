@@ -4,7 +4,7 @@ $list-button-height: 50px;
 $list-button-margin: 10px;
 
 .navbar {
-  background: green;
+  background: #673ab7;
   height: $navbar-height;
   text-align: center;
   padding: $navbar-padding 0;
@@ -13,6 +13,7 @@ $list-button-margin: 10px;
   position: fixed;
   top: 0;
   width: 100%;
+  color: white;
 }
 
 .add-list-button {

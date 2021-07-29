@@ -137,6 +137,4 @@ export class TrelloEpics {
             };
         })
     )
-
-    
 }
