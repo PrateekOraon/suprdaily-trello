@@ -37,4 +37,8 @@ $list-button-margin: 10px;
     #{$navbar-height} + #{$list-button-height} + #{$list-button-margin}
   );
   display: flex;
+
+  .list-item {
+    display: flex;
+  }
 }

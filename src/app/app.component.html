@@ -6,13 +6,17 @@
 
 <div class="list-container" cdkDropListGroup>
   <ng-container *ngIf="boardLists$ | async as boardLists">
-    <ng-container *ngIf="boardLists.length; else blankPage">
+
+    <div class="list-item" *ngIf="boardLists.length; else blankPage">
       <app-trello-list [cdkDropListData]="list" cdkDropList (cdkDropListDropped)="drop($event)" *ngFor="let list of boardLists" [list]="list">
-        <app-trello-card *ngFor="let item of list.items" cdkDrag [item]="item" (removeCard)="removeCard(list, item)"></app-trello-card>
+        <app-trello-card *ngFor="let item of list.items" cdkDragBoundary=".list-item" cdkDrag [item]="item" (removeCard)="removeCard(list, item)"></app-trello-card>
       </app-trello-list>
-    </ng-container>
+    </div>
+    
+    <!-- blank page placeholder when there are no lists present-->
     <ng-template #blankPage>
       <div class="mat-h2">Try adding lists...</div>
     </ng-template>
+
   </ng-container>
 </div>
